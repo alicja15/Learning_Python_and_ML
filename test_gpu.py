@@ -1,10 +1,10 @@
 import torch_directml
 import torch
 
-# Sprawdzenie urządzenia
+# Check the available device
 device = torch_directml.device()
-print(f"Znalezione urządzenie: {device}")
+print(f"Found device: {device}")
 
-# Prosta operacja matematyczna na GPU
+# Simple math operation on the GPU to verify functionality
 x = torch.tensor([1.0, 2.0]).to(device)
-print(f"Test obliczeń: {x * 2}")
+print(f"Calculation test: {x * 2}")

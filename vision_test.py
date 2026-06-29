@@ -3,15 +3,15 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from PIL import Image
 import requests
 
-# 1. Wymuszamy CPU - to zadziała na każdym komputerze
+# 1. Force CPU usage - this will work on any computer
 device = "cpu" 
-print(f"Używam urządzenia: {device}")
+print(f"Using device: {device}")
 
-# reszta kodu pozostaje bez zmian (model_id, image_url itd.)
+# Model configuration
 model_id = "vikhyatk/moondream2"
 revision = "2024-03-06"
 
-print("Ładowanie modelu na CPU...")
+print("Loading model on CPU...")
 model = AutoModelForCausalLM.from_pretrained(
     model_id, 
     trust_remote_code=True, 
@@ -20,14 +20,14 @@ model = AutoModelForCausalLM.from_pretrained(
 
 tokenizer = AutoTokenizer.from_pretrained(model_id, revision=revision)
 
-print("Pobieranie obrazka...")
+print("Downloading image...")
 image_url = "https://raw.githubusercontent.com/vikhyat/moondream/main/assets/demo-1.jpg"
 image = Image.open(requests.get(image_url, stream=True).raw)
 
-print("Analizuję na CPU (może to potrwać 10-20 sekund)...")
+print("Analyzing on CPU (this may take 10-20 seconds)...")
 enc_image = model.encode_image(image)
 answer = model.answer_question(enc_image, "Describe this image in detail.", tokenizer)
 
 print("-" * 30)
-print(f"WYNIK: {answer}")
+print(f"RESULT: {answer}")
 print("-" * 30)
