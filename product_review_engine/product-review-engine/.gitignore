@@ -1,0 +1,19 @@
+# Environment & secrets
+.venv/
+.env
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Data & generated results (dataset is downloaded from Kaggle, see README)
+data/*
+!data/.gitkeep
+results/*
+!results/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
