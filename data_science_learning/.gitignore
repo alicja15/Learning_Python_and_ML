@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+*.egg-info/
+.venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large datasets (add to repo only if small)
+# data/*.csv   # Uncomment to exclude CSVs from git
